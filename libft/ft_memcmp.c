@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strnstr.c                                          :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afahs <afahs@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/20 19:12:42 by afahs             #+#    #+#             */
-/*   Updated: 2025/05/21 01:48:39 by afahs            ###   ########.fr       */
+/*   Created: 2025/05/22 15:10:59 by afahs             #+#    #+#             */
+/*   Updated: 2025/05/22 15:20:39 by afahs            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <libft.h>
 
-char	*ft_strstr(const char *big, const char *little, size_t len)
+void	*ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	size_t			i;
-	unsigned int	j;
+	unsigned char	*temp1;
+	unsigned char	*temp2;
 
+	temp1 = (unsigned char *)s1;
+	temp2 = (unsigned char *)s2;
 	i = 0;
-	if (!little[i])
-		return (big);
-	while (big[i] && i < len)
+	while (i < n)
 	{
-		j = 0;
-		while (little[j])
-		{
-			if (big[i + j] == little[j])
-				j++;
-			else
-				break ;
-		}
-		if (!little[j])
-			return (&big[i]);
+		if (temp1[i] != temp2[i])
+			return (temp1[i] - temp2[i]);
 		i++;
 	}
-	return (NULL);
+	return (0);
 }

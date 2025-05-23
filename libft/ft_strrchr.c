@@ -6,7 +6,7 @@
 /*   By: afahs <afahs@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:07:26 by afahs             #+#    #+#             */
-/*   Updated: 2025/05/22 09:13:49 by afahs            ###   ########.fr       */
+/*   Updated: 2025/05/22 15:00:28 by afahs            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,5 @@ char	*ft_strrchr(const char *s, int c)
 			return ((char *)&s[i]);
 		i--;
 	}
-	if (s[i] == t)
-		return ((char *)&s[i]);
 	return (NULL);
 }
