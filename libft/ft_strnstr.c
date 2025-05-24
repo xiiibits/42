@@ -6,7 +6,7 @@
 /*   By: afahs <afahs@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:12:42 by afahs             #+#    #+#             */
-/*   Updated: 2025/05/22 15:29:04 by afahs            ###   ########.fr       */
+/*   Updated: 2025/05/24 02:52:11 by afahs            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,12 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		return ((char *)big);
 	while (big[i] && i < len)
 	{
-		while (big[i + j] == little[j] && big[i + j] && i + j < len)
-		{
-			j++;
-			if (little[j] == 0)
-				return ((char *)big + i);
-		}
-		i++;
 		j = 0;
+		while (big[i + j] == little[j] && i + j < len && little[j])
+			j++;
+		if (little[j] == 0)
+			return ((char *)big + i);
+		i++;
 	}
 	return (0);
 }

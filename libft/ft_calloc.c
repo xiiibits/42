@@ -6,7 +6,7 @@
 /*   By: afahs <afahs@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:33:59 by afahs             #+#    #+#             */
-/*   Updated: 2025/05/22 17:08:44 by afahs            ###   ########.fr       */
+/*   Updated: 2025/05/24 02:44:33 by afahs            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	size_t			i;
 
 	i = 0;
+	if (size != 0 && (nmemb * size) / size != nmemb)
+		return (NULL);
 	res = malloc(nmemb * size);
 	if (!res)
 		return (NULL);

@@ -1,33 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afahs <afahs@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/22 18:45:59 by afahs             #+#    #+#             */
-/*   Updated: 2025/05/24 02:56:46 by afahs            ###   ########.fr       */
+/*   Created: 2025/05/23 17:18:37 by afahs             #+#    #+#             */
+/*   Updated: 2025/05/24 06:41:41 by afahs            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+static int	count(int n)
 {
-	char	*res;
-	int		i;
-	int		j;
+	int		c;
 
-	res = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!res)
+	c = 0;
+	if (n <= 0)
+		c++;
+	while (n != 0)
+	{
+		c++;
+		n = n / 10;
+	}
+	return (c);
+}
+
+char	*ft_itoa(int n)
+{
+	char	*s;
+	int		i;
+	int		c;
+	long	nb;
+
+	nb = n;
+	c = count(nb);
+	s = malloc(c + 1);
+	if (!s)
 		return (NULL);
-	i = 0;
-	j = 0;
-	while (s1[j])
-		res[i++] = s1[j++];
-	j = 0;
-	while (s2[j])
-		res[i++] = s2[j++];
-	res[i] = 0;
-	return (res);
+	s[c] = 0;
+	if (nb < 0)
+	{
+		s[0] = '-';
+		nb = -nb;
+	}
+	if (nb == 0)
+		s[0] = '0';
+	i = c - 1;
+	while (nb > 0)
+	{
+		s[i--] = (nb % 10) + '0';
+		nb = nb / 10;
+	}
+	return (s);
 }

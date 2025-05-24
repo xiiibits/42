@@ -20,6 +20,15 @@ int main(void)
 	/* 2 */ check(ft_isdigit('0')); showLeaks();
 	/* 3 */ check(!ft_isdigit('9' + 1)); showLeaks();
 	/* 4 */ check(ft_isdigit('9')); showLeaks();
+	/* 5 */ check(ft_isdigit('5')); showLeaks(); // Middle digit
+	/* 6 */ check(!ft_isdigit('a')); showLeaks(); // Lowercase letter
+	/* 7 */ check(!ft_isdigit('A')); showLeaks(); // Uppercase letter
+	/* 8 */ check(!ft_isdigit(' ')); showLeaks(); // Space
+	/* 9 */ check(!ft_isdigit('\t')); showLeaks(); // Tab
+	/* 10 */ check(!ft_isdigit('\0')); showLeaks(); // Null terminator
+	/* 11 */ check(!ft_isdigit('!')); showLeaks(); // Symbol
+	/* 12 */ check(!ft_isdigit(128)); showLeaks(); // Extended ASCII
+	/* 13 */ check(!ft_isdigit(-1)); showLeaks(); // Negative value
 	write(1, "\n", 1);
 	return (0);
 }

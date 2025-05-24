@@ -6,11 +6,11 @@
 /*   By: afahs <afahs@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 01:25:21 by afahs             #+#    #+#             */
-/*   Updated: 2025/05/22 15:29:59 by afahs            ###   ########.fr       */
+/*   Updated: 2025/05/24 01:08:29 by afahs            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	int	i;
 	int	s;

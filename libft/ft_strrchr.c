@@ -6,7 +6,7 @@
 /*   By: afahs <afahs@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:07:26 by afahs             #+#    #+#             */
-/*   Updated: 2025/05/22 15:00:28 by afahs            ###   ########.fr       */
+/*   Updated: 2025/05/24 01:34:31 by afahs            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	size_t	i;
+	int		i;
 	char	t;
 
 	t = (char)c;
