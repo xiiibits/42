@@ -6,12 +6,12 @@
 /*   By: afahs <afahs@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 01:43:35 by afahs             #+#    #+#             */
-/*   Updated: 2025/05/24 08:40:36 by afahs            ###   ########.fr       */
+/*   Updated: 2025/05/25 12:48:21 by afahs            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
-# define LIB_FT
+# define LIBFT_H
 
 # include <stdlib.h>
 # include <unistd.h>
