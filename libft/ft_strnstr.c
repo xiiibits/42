@@ -6,7 +6,7 @@
 /*   By: afahs <afahs@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:12:42 by afahs             #+#    #+#             */
-/*   Updated: 2025/05/24 02:52:11 by afahs            ###   ########.fr       */
+/*   Updated: 2025/06/05 06:41:58 by afahs            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,3 +31,16 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	}
 	return (0);
 }
+
+// #include <stdio.h>
+// int main(void)
+// {
+// 	char c[4] ;
+// 	char c1[4];
+
+// 	*c = NULL;
+// 	c1[0] = 's';
+// 	printf("%s \n", ft_strnstr(c, c1, 5));
+	
+// 	return (0);
+// }
