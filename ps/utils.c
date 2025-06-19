@@ -6,57 +6,52 @@
 /*   By: afahs <afahs@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 14:07:51 by afahs             #+#    #+#             */
-/*   Updated: 2025/06/19 11:05:40 by afahs            ###   ########.fr       */
+/*   Updated: 2025/06/19 12:26:01 by afahs            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_valid(char *s)
+t_stack	*new_node(int value)
 {
-	int		i;
-	long	n;
+	t_stack	*new;
 
-	i = 0;
-	if (!s || !*s)
-		return (0);
-	if (s[i] == '-' || s[i] == '+')
-		i++;
-	if (!s[i])
-		return (0);
-	while (s[i])
-	{
-		if (!(s[i] >= '0' && s[i] <= '9'))
-			return (0);
-		i++;
-	}
-	n = ft_atol(s);
-	if (n > 2147483647 || n < -2147483648)
-		return (0);
-	return (1);
+	new = malloc(sizeof(t_stack));
+	if (!new)
+		return (NULL);
+	new->value = value;
+	new->index = -1;
+	new->next = NULL;
+	return (new);
 }
 
-int	check_dups(long *n, int size)
+void	add_front(t_stack **stack, t_stack *node)
 {
-	int		i;
-	int		j;
+	node->next = *stack;
+	*stack = node;
+}
 
-	i = 0;
-	while (i < size)
+t_stack	*build_stack(long *n, int c)
+{
+	t_stack	*stack;
+	t_stack	*node;
+	int		i;
+
+	stack = NULL;
+	i = c - 1;
+	while (i > 0)
 	{
-		j = i + 1;
-		while (j < size)
+		node = new_node(n[c]);
+		if (!node)
 		{
-			if (n[i] == n[j])
-				return (0);
-			j++;
+			free_stack(stack);
+			return (NULL);
 		}
-		i++;
+		add_front(&stack, node);
+		i--;
 	}
-	return (1);
+	return (stack);
 }
-
-t_stack	*
 
 t_stack	*parse_args(int c, char **v)
 {
@@ -64,37 +59,31 @@ t_stack	*parse_args(int c, char **v)
 	t_stack	*s;
 	long	*n;
 
-	i = 0;
-	while (v[i])
+	i = 1;
+	while (i < c)
 	{
 		if (!is_valid(v[i]))
 			return (NULL);
 		i++;
 	}
 	n = built_array(v, c);
-	if (!check_dups(n, c))
+	if (!check_dups(n, c - 1))
 	{
 		free(n);
 		return (NULL);
 	}
-	i = 0;
-	s = malloc(c * sizeof(t_stack));
-	if (!n)
-		return (NULL);
-	while (v[i])
-	{
-		
-	}
+	s = build_stack(n, c - 1);
+	return (s);
 }
 
 void	free_stack(t_stack *s)
 {
-	t_stack	tmp;
+	t_stack	*tmp;
 
 	while (s)
 	{
 		tmp = s;
 		s = s->next;
-		free(temp);
+		free(tmp);
 	}
 }
