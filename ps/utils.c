@@ -6,46 +6,23 @@
 /*   By: afahs <afahs@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 14:07:51 by afahs             #+#    #+#             */
-/*   Updated: 2025/06/16 17:19:27 by afahs            ###   ########.fr       */
+/*   Updated: 2025/06/19 11:05:40 by afahs            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-long	ft_atol(const char *str)
-{
-	int		i;
-	long	s;
-	long	n;
-
-	i = 0;
-	s = 1;
-	n = 0;
-	while ((str[i] > 8 && str[i] < 14) || str[i] == ' ')
-		i++;
-	if (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			s = s * -1;
-		i++;
-	}
-	while (str[i] >= 48 && str[i] <= 57)
-	{
-		n = (n * 10) + (str[i] - '0');
-		i++;
-	}
-	return (n * s);
-}
 
 int	is_valid(char *s)
 {
 	int		i;
 	long	n;
 
-	i = 1;
-	if (!s)
+	i = 0;
+	if (!s || !*s)
 		return (0);
-	if (!(s[0] == '-' || s[0] == '+') && !(s[0] >= '0' && s[0] <= '9'))
+	if (s[i] == '-' || s[i] == '+')
+		i++;
+	if (!s[i])
 		return (0);
 	while (s[i])
 	{
@@ -59,21 +36,13 @@ int	is_valid(char *s)
 	return (1);
 }
 
-int	check_dups(char **s, int size)
+int	check_dups(long *n, int size)
 {
-	long	*n;
 	int		i;
 	int		j;
 
-	n = malloc(size * sizeof(long));
 	i = 0;
-	while (s[i])
-	{
-		n[i] = ft_atol(s[i]);
-		i++;
-	}
-	i = 0;
-	while (n[i])
+	while (i < size)
 	{
 		j = i + 1;
 		while (j < size)
@@ -86,6 +55,8 @@ int	check_dups(char **s, int size)
 	}
 	return (1);
 }
+
+t_stack	*
 
 t_stack	*parse_args(int c, char **v)
 {
@@ -100,16 +71,30 @@ t_stack	*parse_args(int c, char **v)
 			return (NULL);
 		i++;
 	}
-	if (!check_dups(v, c))
+	n = built_array(v, c);
+	if (!check_dups(n, c))
+	{
+		free(n);
 		return (NULL);
+	}
 	i = 0;
 	s = malloc(c * sizeof(t_stack));
 	if (!n)
 		return (NULL);
 	while (v[i])
 	{
-		s
+		
 	}
-	
-	
+}
+
+void	free_stack(t_stack *s)
+{
+	t_stack	tmp;
+
+	while (s)
+	{
+		tmp = s;
+		s = s->next;
+		free(temp);
+	}
 }
