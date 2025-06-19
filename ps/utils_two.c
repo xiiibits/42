@@ -6,7 +6,7 @@
 /*   By: afahs <afahs@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 10:57:25 by afahs             #+#    #+#             */
-/*   Updated: 2025/06/19 11:57:33 by afahs            ###   ########.fr       */
+/*   Updated: 2025/06/19 14:00:26 by afahs            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ long	*built_array(char **s, int size)
 	int		i;
 	int		j;
 
-	n = malloc(size * sizeof(long));
+	n = malloc((size - 1) * sizeof(long));
 	if (!n)
 		return (NULL);
 	i = 1;
 	while (i < size)
 	{
-		n[i] = ft_atol(s[i]);
+		n[i - 1] = ft_atol(s[i]);
 		i++;
 	}
 	return (n);

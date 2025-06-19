@@ -6,7 +6,7 @@
 /*   By: afahs <afahs@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 14:07:51 by afahs             #+#    #+#             */
-/*   Updated: 2025/06/19 12:26:01 by afahs            ###   ########.fr       */
+/*   Updated: 2025/06/19 12:28:34 by afahs            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ t_stack	*build_stack(long *n, int c)
 
 	stack = NULL;
 	i = c - 1;
-	while (i > 0)
+	while (i >= 0)
 	{
-		node = new_node(n[c]);
+		node = new_node(n[i]);
 		if (!node)
 		{
 			free_stack(stack);
@@ -73,6 +73,7 @@ t_stack	*parse_args(int c, char **v)
 		return (NULL);
 	}
 	s = build_stack(n, c - 1);
+	free(n);
 	return (s);
 }
 
