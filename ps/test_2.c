@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include <stdio.h>
 
 typedef struct s_stack
 {
@@ -822,6 +823,8 @@ long int    ft_atoi(const char *str)
     while (str[i] >= '0' && str[i] <= '9')
     {
         nb = nb * 10 + (str[i] - '0');
+        if (nb > INT_MAX)
+            return (nb * sign);
         i++;
     }
     return (nb * sign);
@@ -993,18 +996,20 @@ static int get_lowest_index_position(t_stack **stack)
     t_stack *tmp;
     int     lowest_index;
     int     lowest_pos;
+    int     current_pos;
 
     tmp = *stack;
     lowest_index = INT_MAX;
-    get_position(stack);
-    lowest_pos = tmp->pos;
+    lowest_pos = 0;
+    current_pos = 0;
     while (tmp)
     {
         if (tmp->index < lowest_index)
         {
             lowest_index = tmp->index;
-            lowest_pos = tmp->pos;
+            lowest_pos = current_pos;
         }
+        current_pos++;
         tmp = tmp->next;
     }
     return (lowest_pos);
